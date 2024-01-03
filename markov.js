@@ -1,5 +1,5 @@
+"use strict";
 /** Textual markov chain generator. */
-
 
 class MarkovMachine {
 
@@ -27,7 +27,6 @@ class MarkovMachine {
    * */
 
   getChains() {
-    // TODO: implement this!
 
     //create object
     //loop through words
@@ -54,23 +53,31 @@ class MarkovMachine {
    *  until it hits a null choice. */
 
   getText() {
-    // TODO: implement this!
 
     // - start at the first word in the input text
     // - find a random word from the following-words of that
     // - repeat until reaching the terminal null
-    let randomText = "";
-    let currWord = this.words[0]
+    let textArray = [];
+    let currWord = this.words[0];
 
     //while following word is not null
       //pick random index of array
       //add to an array of new text
     while(currWord !== null){
-      let randomIdx = Math.floor(Math.random() * this.chains[currWord].length - 1);
+      textArray.push(currWord);
+      // randomText += " " + currWord;
+      let randomIdx = Math.floor(Math.random() * this.chains[currWord].length);
       let randomWord = this.chains[currWord][randomIdx];
-      randomText += randomWord;
       currWord = randomWord;
     }
-    return randomText;
+
+    return textArray.join(" ");
   }
 }
+
+// let machine = new MarkovMachine(input);
+// console.log(machine.getText());
+
+module.exports = {
+  MarkovMachine,
+};
