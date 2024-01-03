@@ -65,7 +65,7 @@ class MarkovMachine {
       //add to an array of new text
     while(currWord !== null){
       textArray.push(currWord);
-      // randomText += " " + currWord;
+
       let randomIdx = Math.floor(Math.random() * this.chains[currWord].length);
       let randomWord = this.chains[currWord][randomIdx];
       currWord = randomWord;
